@@ -1,0 +1,9 @@
+-- select * from state_climate limit 5;
+-- select state, year, avg(tempf) over (partition by state order by year ) from state_climate limit 5;
+-- select state, year, tempc , first_value(tempc) over (partition by state order by tempc) from state_climate;
+-- select state, year, tempc , last_value(tempf) over (partition by state order by tempc) from state_climate;
+-- select state, year, tempc , tempc - lag(tempc,1,0) over (partition by state order by tempc) as ans from state_climate;
+-- select state, year, tempf , rank () over (order by tempf ) from state_climate;
+-- select state, year, tempf , rank () over (order by tempf desc) from state_climate;
+-- select ntile(4) over (partition by state order by tempc ) ,state, year, tempc from state_climate;
+select ntile(5) over ( order by tempc ) ,state, year, tempc from state_climate;
